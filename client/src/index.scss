@@ -1,0 +1,17 @@
+@import './styles/toggle.scss';
+@import './styles/header.scss';
+@import './styles/search.scss';
+
+body {
+  background: lightGrey;
+  margin: 0;
+}
+.mainLayout {
+  height: 100vh;
+  &--dark {
+    background-color: burlywood;
+  }
+  &--light {
+    background-color: lightGrey;
+  }
+}
