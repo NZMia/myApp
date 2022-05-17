@@ -14,16 +14,41 @@ export const fetchUserAsync = createAsyncThunk(
   }
 );
 
+export const fetchUserReposAsync = createAsyncThunk(
+  'github/fetchUserRepos',
+  async (userName) => {
+    try {
+      const res = await api.get(`/${userName}/repos`);
+      res.data.sort((frist, second) => {
+        if (frist.created_at < second.created_at) {
+          return 1;
+        }
+        if (frist.created_at > second.created_at) {
+          return -1;
+        }
+        return 0;
+      });
+
+      return res.data.slice(0, 4);
+    } catch (err) {
+      throw Error(err.message);
+    }
+  }
+);
 export const userSlice = createSlice({
   name: 'user',
 
   initialState: {
-    userInfo: {}
+    userInfo: {},
+    userRepos: []
   },
 
   extraReducers: {
     [fetchUserAsync.fulfilled]: (state, { payload }) => {
       state.userInfo = payload;
+    },
+    [fetchUserReposAsync.fulfilled]: (state, { payload }) => {
+      state.userRepos = payload;
     }
   }
 });

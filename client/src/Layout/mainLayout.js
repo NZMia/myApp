@@ -7,13 +7,14 @@ import SearchResult from '../components/SearchResult';
 import Loading from '../components/Loading';
 
 const MainLayout = () => {
-  const { userInfo } = useSelector((state) => state.user);
-  const { loadingState } = useSelector((state) => state.loading);
+  const { userInfo, userRepos } = useSelector((state) => state.user);
+  const { loadingUserState, loadingRepoState } = useSelector(
+    (state) => state.loading
+  );
   const { toggleState } = useSelector((state) => state.toggle);
 
-  const hasUser = Object.keys(userInfo).length != 0 && !loadingState;
-
-  console.info('toggleState', toggleState);
+  const hasUser = Object.keys(userInfo).length != 0 && !loadingUserState;
+  const hasRepo = Object.keys(userInfo).length != 0 && !loadingRepoState;
 
   return (
     <div
@@ -26,8 +27,10 @@ const MainLayout = () => {
       <Header />
       <div className="mainContent">
         <SearchPanel />
-        {loadingState && <Loading />}
-        {hasUser && <SearchResult user={userInfo} />}
+        {loadingUserState || (loadingRepoState && <Loading />)}
+        {hasUser && hasRepo && (
+          <SearchResult user={userInfo} repos={userRepos} />
+        )}
       </div>
     </div>
   );

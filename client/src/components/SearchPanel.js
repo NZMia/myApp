@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserAsync } from '../store/userSlice';
+import { useDispatch } from 'react-redux';
+import { fetchUserAsync, fetchUserReposAsync } from '../store/userSlice';
 const SearchPanel = () => {
   const [param, setParam] = useState({
     userId: '',
@@ -18,6 +18,7 @@ const SearchPanel = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchUserAsync(param.userName));
+    dispatch(fetchUserReposAsync(param.userName));
   };
 
   return (

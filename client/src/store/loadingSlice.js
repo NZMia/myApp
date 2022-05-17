@@ -1,24 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUserAsync } from './userSlice';
+import { fetchUserAsync, fetchUserReposAsync } from './userSlice';
 
-const isLoadingReducer = (state) => {
-  state.loadingState = true;
+const isUserLoadingReducer = (state) => {
+  state.loadingUserState = true;
 };
-const noneLoadingReducer = (state) => {
-  state.loadingState = false;
+const noneUesrLoadingReducer = (state) => {
+  state.loadingUserState = false;
+};
+
+const isRepoLoadingReducer = (state) => {
+  state.loadingRepoState = true;
+};
+const noneRepoLoadingReducer = (state) => {
+  state.loadingRepoState = false;
 };
 
 export const loadingSlice = createSlice({
   name: 'loading',
 
   initialState: {
-    loadingState: false
+    loadingUserState: false,
+    loadingRepoState: false
   },
 
   extraReducers: {
-    [fetchUserAsync.pending]: isLoadingReducer,
-    [fetchUserAsync.fulfilled]: noneLoadingReducer,
-    [fetchUserAsync.rejected]: noneLoadingReducer
+    [fetchUserAsync.pending]: isUserLoadingReducer,
+    [fetchUserAsync.fulfilled]: noneUesrLoadingReducer,
+    [fetchUserAsync.rejected]: noneUesrLoadingReducer,
+
+    [fetchUserReposAsync.pending]: isRepoLoadingReducer,
+    [fetchUserReposAsync.fulfilled]: noneRepoLoadingReducer,
+    [fetchUserReposAsync.rejected]: noneRepoLoadingReducer
   }
 });
 

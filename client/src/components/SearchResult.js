@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = ({ user }) => {
+const SearchResult = ({ user, repos }) => {
   return (
     <div className="searchResult">
       {typeof user != 'string' ? (
@@ -16,6 +16,10 @@ const SearchResult = ({ user }) => {
           <p>Not Found</p>
         </div>
       )}
+      {repos &&
+        repos.map((repo) => {
+          return <p key={repo.id}>{repo.name}</p>;
+        })}
     </div>
   );
 };
