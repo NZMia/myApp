@@ -33,7 +33,7 @@ npm i
 Next you need to create your `.env` file.
 
 ```
-REACT_APP_API_URL = 'api url'  
+REACT_APP_API_URL = 'https://api.github.com/users/'  
 
 Coming soon ....
 ```
