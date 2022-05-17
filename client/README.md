@@ -54,4 +54,6 @@ npm 6.14.17
 
 
 #### TODO  
+- [ ] style
 - [ ] tidy up
+- [ ] deploy to hosting
