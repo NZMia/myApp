@@ -49,6 +49,10 @@ export const userSlice = createSlice({
     },
     [fetchUserReposAsync.fulfilled]: (state, { payload }) => {
       state.userRepos = payload;
+    },
+    // TODO_Improvement: To add error state
+    [fetchUserReposAsync.rejected]: (state, { payload }) => {
+      state.userRepos = [];
     }
   }
 });
