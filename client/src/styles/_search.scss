@@ -3,9 +3,11 @@ form {
   @extend .globalGutter;
 
   width: 50%;
+
   @include respond(ipad) {
     width: auto;
   }
+
   input {
     padding: $global-padding;
     border: none;
@@ -18,6 +20,7 @@ form {
       outline: none;
     }
   }
+
   button {
     min-width: 5rem;
     padding: $global-padding;
@@ -36,6 +39,7 @@ form {
   }
 
   font-weight: bold;
+
   &__img {
     width: 35%;
     border-radius: 50%;

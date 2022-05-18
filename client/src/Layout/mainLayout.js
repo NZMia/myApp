@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from '../components/Header';
@@ -25,7 +25,7 @@ const MainLayout = () => {
       <Header />
       <div className="mainContent">
         <SearchPanel />
-        {loadingUserState || (loadingRepoState && <Loading />)}
+        {(loadingUserState || loadingRepoState) && <Loading />}
         {hasUser && hasRepo && (
           <SearchResult user={userInfo} repos={userRepos} />
         )}
