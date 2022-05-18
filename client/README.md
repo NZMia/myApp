@@ -59,8 +59,16 @@ Open http://localhost:5050 to view it in your browser.
 node v14.19.2  
 npm 6.14.17
 
+#### Tecnhology
+
+react
+redux
+redux-toolkit
+axios
+scss
+
 #### TODO
 
-- [ ] style
+- [x] style
 - [ ] tidy up
 - [ ] deploy to hosting
