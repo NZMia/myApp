@@ -18,13 +18,17 @@ const SearchResult = ({ user, repos }) => {
             <div className="searchResult__content--repo">
               <p>Newest Repositories:</p>
               {repos.map((repo) => {
-                return <a key={repo.id}>{repo.name}</a>;
+                return (
+                  <a key={repo.id} href={repo.html_url} target="_blank">
+                    {repo.name}
+                  </a>
+                );
               })}
             </div>
           )}
         </div>
       ) : (
-        <div>
+        <div className="globalGutter">
           <p>Not Found</p>
         </div>
       )}

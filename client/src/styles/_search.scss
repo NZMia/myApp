@@ -34,9 +34,6 @@ form {
 
 .searchResult {
   @extend .spaceBetween;
-  @include respond(ipad) {
-    flex-direction: column;
-  }
 
   font-weight: bold;
 
@@ -48,5 +45,8 @@ form {
   &__content {
     @extend .spaceBetween;
     @extend .globalGutter;
+    @include respond(ipad) {
+      flex-direction: column;
+    }
   }
 }
