@@ -2,6 +2,7 @@ import React from 'react';
 
 const SearchResult = ({ user, repos }) => {
   const hasUser = typeof user != 'string';
+  const hasRepo = repos && repos.length != 0;
 
   return (
     <div className="searchResult">
@@ -14,7 +15,7 @@ const SearchResult = ({ user, repos }) => {
             <p>Followers: {user.followers}</p>
             <p>Following: {user.following}</p>
           </div>
-          {repos && (
+          {hasRepo && (
             <div className="searchResult__content--repo">
               <p>Newest Repositories:</p>
               {repos.map((repo) => {
