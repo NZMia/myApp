@@ -71,4 +71,4 @@ scss
 
 - [x] style
 - [x] tidy up
-- [ ] deploy to hosting
+- [x] deploy to hosting
