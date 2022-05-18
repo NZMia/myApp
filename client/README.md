@@ -70,5 +70,5 @@ scss
 #### TODO
 
 - [x] style
-- [ ] tidy up
+- [x] tidy up
 - [ ] deploy to hosting

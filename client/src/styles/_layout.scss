@@ -5,9 +5,5 @@
 }
 
 .globalGutter {
-  padding: calc(($global-max-width - $xlarge) / 4);
-
-  @include respond(tablet) {
-    padding: $global-padding * 2.5;
-  }
+  padding: $global-padding * 2.5;
 }
