@@ -1,25 +1,33 @@
 import React from 'react';
 
 const SearchResult = ({ user, repos }) => {
+  const hasUser = typeof user != 'string';
+
   return (
     <div className="searchResult">
-      {typeof user != 'string' ? (
-        <div>
-          <img src={user.avatar_url} alt="" />
-          <p>name: {user.name}</p>
-          <p>Repositories count: {user.public_repos}</p>
-          <p>Followers: {user.followers}</p>
-          <p>Following: {user.following}</p>
+      {hasUser ? (
+        <div className="searchResult__content">
+          <img className="searchResult__img" src={user.avatar_url} alt="" />
+          <div className="searchResult__content--user">
+            <p>Name: {user.name}</p>
+            <p>Repositories count: {user.public_repos}</p>
+            <p>Followers: {user.followers}</p>
+            <p>Following: {user.following}</p>
+          </div>
+          {repos && (
+            <div className="searchResult__content--repo">
+              <p>Newest Repositories:</p>
+              {repos.map((repo) => {
+                return <a key={repo.id}>{repo.name}</a>;
+              })}
+            </div>
+          )}
         </div>
       ) : (
         <div>
           <p>Not Found</p>
         </div>
       )}
-      {repos &&
-        repos.map((repo) => {
-          return <p key={repo.id}>{repo.name}</p>;
-        })}
     </div>
   );
 };

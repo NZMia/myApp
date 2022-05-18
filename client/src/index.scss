@@ -1,17 +1,15 @@
-@import './styles/toggle.scss';
-@import './styles/header.scss';
-@import './styles/search.scss';
+@import './styles/main.scss';
 
 body {
-  background: lightGrey;
   margin: 0;
+  font-family: 'Maitree', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: $global-max-width;
+  background-color: $lotion;
 }
-.mainLayout {
-  height: 100vh;
-  &--dark {
-    background-color: burlywood;
-  }
-  &--light {
-    background-color: lightGrey;
-  }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

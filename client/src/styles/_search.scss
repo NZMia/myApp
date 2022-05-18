@@ -1,0 +1,48 @@
+form {
+  @extend .spaceBetween;
+  @extend .globalGutter;
+
+  width: 50%;
+  @include respond(ipad) {
+    width: auto;
+  }
+  input {
+    padding: $global-padding;
+    border: none;
+    border-radius: 4px;
+    flex-grow: 2;
+    flex-shrink: 2;
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    min-width: 5rem;
+    padding: $global-padding;
+    border-radius: 4px;
+    border: none;
+    background: $lightTaupe;
+    color: $lotion;
+    font-weight: bold;
+  }
+}
+
+.searchResult {
+  @extend .spaceBetween;
+  @include respond(ipad) {
+    flex-direction: column;
+  }
+
+  font-weight: bold;
+  &__img {
+    width: 35%;
+    border-radius: 50%;
+  }
+
+  &__content {
+    @extend .spaceBetween;
+    @extend .globalGutter;
+  }
+}

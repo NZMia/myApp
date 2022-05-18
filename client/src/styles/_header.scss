@@ -1,0 +1,8 @@
+$width: 10%;
+
+.header {
+  @extend .spaceBetween;
+  @extend .globalGutter;
+  @extend .font;
+  box-shadow: $flashWhite 0px 1px 20px;
+}

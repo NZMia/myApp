@@ -3,7 +3,7 @@ import Toggle from './Toggle';
 const Header = () => {
   return (
     <div className="header">
-      <p>Mia</p>
+      <h1>Github Profiles</h1>
       <Toggle />
     </div>
   );

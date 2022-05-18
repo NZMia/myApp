@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import store from './store/index';
-import MainLayout from './Layout/mainLayout';
+import MainLayout from './layout/mainLayout';
 
 function App() {
   return (

@@ -1,0 +1,13 @@
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.globalGutter {
+  padding: calc(($global-max-width - $xlarge) / 4);
+
+  @include respond(tablet) {
+    padding: $global-padding * 2.5;
+  }
+}
