@@ -12,7 +12,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=5002 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -40,12 +40,15 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/react-hooks": "^8.0.0",
+    "axios": "^0.27.2",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
     "msw": "^0.40.0",
-    "prettier": "2.6.2"
+    "prettier": "2.6.2",
+    "react-redux": "^8.0.1"
   },
   "lint-staged": {
     "*.{js,css,scss,md,html,json,ts}": "prettier --write"
