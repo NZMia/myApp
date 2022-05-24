@@ -1,10 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { api } from '../utils/http';
 
 export const fetchUserAsync = createAsyncThunk(
   'my/fetchUser',
   async (userName) => {
     try {
-      console.info('userName', userName);
+      const res = await api.post('/auth/login');
+      console.info('res', res);
+
+      return res.data;
     } catch (err) {
       console.info('err', err);
     }

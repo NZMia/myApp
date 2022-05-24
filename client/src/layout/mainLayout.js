@@ -4,9 +4,11 @@ import Auth from '../components/Auth';
 
 const MainLayout = () => {
   const { userLoadingState } = useSelector((state) => state.loading);
+  const { authState } = useSelector((state) => state.auth);
+
   return (
     <div className="mainLayout">
-      <Auth />
+      <Auth isAuth={authState} />
     </div>
   );
 };

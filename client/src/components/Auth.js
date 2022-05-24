@@ -2,17 +2,20 @@ import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUserAsync } from '../store/userSlice';
 
-const Auth = () => {
+const Auth = ({ isAuth }) => {
   const userRef = useRef();
   const pswRef = useRef();
+  const nameRef = useRef();
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userName = userRef.current.value;
+    const userEmail = userRef.current.value;
     const userPsw = pswRef.current.value;
+    const userName = nameRef.current.value;
 
-    dispatch(fetchUserAsync({ userName, userPsw }));
+    // dispatch(fetchUserAsync({ userEmail, userPsw, userName }));
   };
   return (
     <form className="auth">
@@ -26,6 +29,18 @@ const Auth = () => {
           required
         />
       </div>
+      {!isAuth && (
+        <div className="auth__name">
+          <label htmlFor="name">User Name</label>
+          <input
+            type="text"
+            placeholder="Enter Display Name"
+            name="name"
+            ref={nameRef}
+            required
+          />
+        </div>
+      )}
 
       <div className="auth__psw">
         <label htmlFor="psw">Password</label>
