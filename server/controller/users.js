@@ -60,10 +60,16 @@ const findOne = (req, res) => {
 // @route   POST /api/users/login
 // @access  public
 const getOne = (req, res) => {
-    res.status(200).json({ message: "login"})
+    debugger
+    // res.status(200).json({ message: "login"})
+    res.send({data: "hello from server 3333"})
 }
 
+// function getOne (req, res) {
+//     res.send({data: "hello from server getONE"})
+// }
 module.exports = {
     create,
     getOne,
 }
+// localhost/:1 Access to XMLHttpRequest at 'http://localhost:5001/api/auth/login' from origin 'http://localhost:5002' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
