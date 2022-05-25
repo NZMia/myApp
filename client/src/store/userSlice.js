@@ -2,12 +2,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../utils/http';
 
 export const fetchUserAsync = createAsyncThunk(
-  'my/fetchUser',
+  'me/fetchUser',
   async (userName) => {
     try {
       const res = await api.post('/auth/login');
-      console.info('res', res);
+      return res.data;
+    } catch (err) {
+      console.info('err', err);
+    }
+  }
+);
 
+export const createUserAsync = createAsyncThunk(
+  'me/createUser',
+  async (userInfo) => {
+    try {
+      const res = await api.post('/auth/register', userInfo);
       return res.data;
     } catch (err) {
       console.info('err', err);
@@ -24,6 +34,9 @@ const userSlice = createSlice({
 
   extraReducers: {
     [fetchUserAsync.fulfilled]: (state, { payload }) => {
+      state.user = payload;
+    },
+    [createUserAsync.fulfilled]: (state, { payload }) => {
       state.user = payload;
     }
   }

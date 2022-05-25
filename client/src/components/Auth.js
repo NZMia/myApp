@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUserAsync } from '../store/userSlice';
+import { fetchUserAsync, createUserAsync } from '../store/userSlice';
 
 const Auth = ({ isAuth }) => {
   const userRef = useRef();
@@ -11,10 +11,11 @@ const Auth = ({ isAuth }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userEmail = userRef.current.value;
-    const userPsw = pswRef.current.value;
-    const userName = nameRef.current.value;
+    const email = userRef.current.value;
+    const password = pswRef.current.value;
+    const name = nameRef.current.value;
 
+    dispatch(createUserAsync({ email, name, password }));
     // dispatch(fetchUserAsync({ userEmail, userPsw, userName }));
   };
   return (
