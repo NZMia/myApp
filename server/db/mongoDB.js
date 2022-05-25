@@ -3,7 +3,7 @@ const { MONGO_URI } = process.env;
 
 exports.connect = () => {
     mongoose
-    .connect(MONGO_URI,{
+    .connect(MONGO_URI, {
         useUnifiedTopology: true
     })
     .then(() => {
