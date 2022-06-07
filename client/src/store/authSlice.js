@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    authState: false
+    authState: Cookies.get('authedJwt') || false
   },
   reducers: {
-    authReducer(state) {
+    authToggle(state) {
       state.authState = !state.authState;
     }
   }
 });
 
-export const { authReducer } = authSlice.actions;
+export const { authToggle } = authSlice.actions;
 export default authSlice.reducer;

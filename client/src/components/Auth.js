@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUserAsync, createUserAsync } from '../store/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = ({ isAuth }) => {
   const userRef = useRef();
@@ -8,16 +9,21 @@ const Auth = ({ isAuth }) => {
   const nameRef = useRef();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = userRef.current.value;
     const password = pswRef.current.value;
-    const name = nameRef.current.value;
+    const name = isAuth ?? nameRef.current.value;
 
-    dispatch(createUserAsync({ email, name, password }));
-    // dispatch(fetchUserAsync({ userEmail, userPsw, userName }));
+    isAuth
+      ? dispatch(fetchUserAsync({ email, password }))
+      : dispatch(createUserAsync({ email, name, password }));
+
+    navigate(`/admin`);
   };
+
   return (
     <form className="auth">
       <div className="auth__user">

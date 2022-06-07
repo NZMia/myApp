@@ -3,9 +3,9 @@ import { api } from '../utils/http';
 
 export const fetchUserAsync = createAsyncThunk(
   'me/fetchUser',
-  async (userName) => {
+  async (userInfo) => {
     try {
-      const res = await api.post('/auth/login');
+      const res = await api.post('/auth/login', userInfo);
       return res.data;
     } catch (err) {
       console.info('err', err);
@@ -29,15 +29,15 @@ const userSlice = createSlice({
   name: 'userSlice',
 
   initialState: {
-    user: {}
+    currentUser: {}
   },
 
   extraReducers: {
     [fetchUserAsync.fulfilled]: (state, { payload }) => {
-      state.user = payload;
+      state.currentUser = payload;
     },
     [createUserAsync.fulfilled]: (state, { payload }) => {
-      state.user = payload;
+      state.currentUser = payload;
     }
   }
 });
