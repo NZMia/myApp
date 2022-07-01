@@ -2,7 +2,7 @@
 [![code compile: webpack](https://img.shields.io/badge/code_compile-webpack-ff69b4.svg?style=plastic)](https://github.com/webpack/webpack)  
 [![code commit rule: commitlint](https://img.shields.io/badge/code_commite-commitlint-ff69b4.svg?style=plastic)](https://github.com/conventional-changelog/commitlint)
 
-# VOYAGE TEST
+# Demo
 
 ![development: working](https://img.shields.io/badge/development-working-informational.svg?style=plastic)
 
