@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import loadingSlice from './loadingSlice';
 import userSlice from './userSlice';
-import authSlice from './authSlice';
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    loading: loadingSlice,
-    user: userSlice,
-    auth: authSlice
+    user: userSlice
   }
+  // middleware: (getDefaultMiddleware) => {
+  //   return getDefaultMiddleware().concat(axiosMiddleware)
+  // }
 });
+
+export default store;

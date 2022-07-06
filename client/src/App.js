@@ -1,32 +1,24 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useMemo } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import MainLayout from './layout/MainLayout';
-import AdminLayout from './layout/AdminLayout';
-import AuthLayout from './layout/AuthLayout';
-
-const ProtectedRoute = ({ redirectPath = '/auth' }) => {
-  const currentUser = useSelector((state) => state.user.currentUser);
-
-  if (currentUser === undefined) {
-    return 'loading.....';
-  }
-
-  if (!Object.keys(currentUser).length > 0) {
-    return <Navigate to={redirectPath} replace />;
-  }
-  return <Outlet />;
-};
+import Auth from './router/Auth';
+import Admin from './router/Admin';
+import RequireAuth from './router/RequireAuth';
+import './styles/main.scss';
 
 const App = () => {
   return (
     <Routes>
-      <Route index element={<MainLayout />} />
-      <Route path="auth" element={<AuthLayout />} />
-      <Route element={<ProtectedRoute />}>
-        <Route path="admin" element={<AdminLayout />} />
+      {/* public routers */}
+      <Route index element={<p>homepage</p>} />
+      <Route path="auth" element={<Auth />} />
+
+      {/* protect routes */}
+      <Route element={<RequireAuth />}>
+        <Route path="admin" element={<Admin />} />
       </Route>
+
+      {/* catch all */}
       <Route path="*" element={<p>There's nothing here: 404!</p>} />
     </Routes>
   );
