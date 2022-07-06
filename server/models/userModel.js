@@ -29,22 +29,22 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-userSchema.pre('find', async function(next) {
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-});
-
+// Static functin in order to find an user via email and password
 userSchema.statics.existCheck = async function(email, password) {
-    const user = await this.findOne({ email });
-    if (user) {
-        const auth = await bcrypt.compare(password, user.password);
-        if (auth) {
-          return user;
-        }
-        throw Error('incorrect password');
-    }
-    throw Error('incorrect email');
+
+  // Find a user
+  const user = await this.findOne({ email });
+
+  // None user in the database
+  if(!user) throw new Error('Unable to login: incorrect email');
+
+  // Compare password
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+  // Password is not matched up
+  if(!isPasswordMatch) throw new Error("Unable to login: incorrect password")
+
+  return user;
 }
 const User = mongoose.model('User', userSchema);
 

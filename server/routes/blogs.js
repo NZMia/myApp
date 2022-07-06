@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { 
+    getDemo,
+} = require('../controller/blogController');
 
-/* GET users listing. */
-router.get('/list', function (req, res, next) {
-    res.json({
-      error: 0,
-      list: ['1', '2', '3'],
-    });
-    next();
-});
-  
+const { userAuth } = require('../middleware/authMiddleware');
+
+// Endpoint for get Demo
+// router.post('/getDemo', userAuth, getDemo)
+
+
 module.exports = router;
