@@ -1,0 +1,9 @@
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.globalGutter {
+  padding: $global-padding * 2.5;
+}

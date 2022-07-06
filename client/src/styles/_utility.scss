@@ -1,0 +1,15 @@
+@import 'variables';
+
+@mixin respond($breakpoints) {
+  @if $breakpoints == ipad {
+    @media only screen and (max-width: $medium) {
+      @content;
+    }
+  }
+
+  @if $breakpoints == tablet {
+    @media only screen and (max-width: $xlarge) {
+      @content;
+    }
+  }
+}
