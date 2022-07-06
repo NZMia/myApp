@@ -1,31 +1,28 @@
+import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUserAsync, createUserAsync } from '../store/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchUserAsync } from '../store/userSlice';
 
-const Auth = ({ isAuth }) => {
+const Auth = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userRef = useRef();
   const pswRef = useRef();
   const nameRef = useRef();
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = userRef.current.value;
     const password = pswRef.current.value;
-    const name = isAuth ?? nameRef.current.value;
+    // const name = nameRef.current.value;
+    dispatch(fetchUserAsync({ email, password }));
 
-    isAuth
-      ? dispatch(fetchUserAsync({ email, password }))
-      : dispatch(createUserAsync({ email, name, password }));
-
-    navigate(`/admin`);
+    navigate('/admin', { replace: true });
   };
 
   return (
-    <form className="auth">
+    <section className="page__auth">
       <div className="auth__user">
         <label htmlFor="email">Email</label>
         <input
@@ -36,18 +33,6 @@ const Auth = ({ isAuth }) => {
           required
         />
       </div>
-      {!isAuth && (
-        <div className="auth__name">
-          <label htmlFor="name">User Name</label>
-          <input
-            type="text"
-            placeholder="Enter Display Name"
-            name="name"
-            ref={nameRef}
-            required
-          />
-        </div>
-      )}
 
       <div className="auth__psw">
         <label htmlFor="psw">Password</label>
@@ -61,9 +46,9 @@ const Auth = ({ isAuth }) => {
       </div>
 
       <button type="sutmit" onClick={handleSubmit}>
-        Submit
+        login
       </button>
-    </form>
+    </section>
   );
 };
 
