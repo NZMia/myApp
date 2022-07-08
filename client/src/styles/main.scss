@@ -5,6 +5,7 @@
 @import './typograhpy';
 
 @import './auth';
+@import './headers';
 
 body {
   margin: 0;
@@ -48,6 +49,9 @@ body {
   }
 }
 
+img {
+  width: 100%;
+}
 .bg--white {
   background-color: $lotion;
   color: $gunmetal;

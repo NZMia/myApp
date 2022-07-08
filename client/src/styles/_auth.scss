@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(200deg, $lotion, $pearl);
+  background: linear-gradient(200deg, $lotion, $green);
   overflow: hidden;
 
   &__container {
@@ -16,7 +16,7 @@
     width: 310px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     padding: 15px 20px;
-    color: $spanishGrey;
+    color: $green;
   }
 }
 
@@ -30,7 +30,7 @@
     border-bottom: 1px solid #ddd;
     outline: none;
     margin: 12px auto;
-    color: $spanishGrey;
+    color: $green;
   }
 
   &__button {
@@ -38,15 +38,15 @@
     height: 40px;
     margin: 35px auto 40px auto;
     border: none;
-    background: linear-gradient(200deg, $pearl, $flashWhite, $platinum);
-    color: $spanishGrey;
+    background: linear-gradient(200deg, $green, $lotion);
+    color: $green;
     font-weight: bold;
     letter-spacing: 5px;
     border-radius: 10px;
     cursor: pointer;
 
     &:hover {
-      background: linear-gradient(-200deg, $platinum, $flashWhite, $pearl);
+      background: linear-gradient(-200deg, $lotion, $green);
       background-position-x: -280px;
     }
   }
@@ -55,11 +55,11 @@
     margin: 35px auto 40px auto;
 
     &--register {
-      color: lighten($lightTaupe, 20%);
+      color: lighten($sunrise, 20%);
       font-weight: bold;
       cursor: pointer;
       &:hover {
-        color: $lightTaupe;
+        color: $sunrise;
       }
     }
   }
