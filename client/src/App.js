@@ -4,13 +4,16 @@ import { Routes, Route } from 'react-router-dom';
 import Auth from './router/Auth';
 import Admin from './router/Admin';
 import RequireAuth from './router/RequireAuth';
+
+import Home from './router/Home';
+
 import './styles/main.scss';
 
 const App = () => {
   return (
     <Routes>
       {/* public routers */}
-      <Route index element={<p>homepage</p>} />
+      <Route index element={<Home />} />
       <Route path="auth" element={<Auth />} />
 
       {/* protect routes */}
