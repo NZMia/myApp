@@ -8,9 +8,6 @@ const store = configureStore({
     user: userSlice,
     digio: digioSlice
   }
-  // middleware: (getDefaultMiddleware) => {
-  //   return getDefaultMiddleware().concat(axiosMiddleware)
-  // }
 });
 
 export default store;

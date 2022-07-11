@@ -3,9 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 
 import Auth from './router/Auth';
 import Admin from './router/Admin';
-import RequireAuth from './router/RequireAuth';
-
 import Home from './router/Home';
+import RequireAuth from './router/RequireAuth';
 
 import './styles/main.scss';
 
