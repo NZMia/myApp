@@ -25,14 +25,17 @@ app.use('/api/auth', usersRouter);
 app.use('/api/admin', userAuth, blogRouter);
 
 /***
- * DigIO test
+ * DigIO test: start
  */
 app.get('/api/digio', (req, res, next) => {
-  res.status(200).json({
-    message: ' Successful',
-  });
-  next();
+  const filePath = path.join(__dirname, "..","programmingTask.log");
+  const newData = filePath.toString()
+
+  console.log(newData)
 })
+/***
+ * DigIO test: end
+ */
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
