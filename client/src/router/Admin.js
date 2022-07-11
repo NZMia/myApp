@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logoutUserAsync } from '../store/userSlice';
+// import { logoutUserAsync } from '../store/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Admin = () => {
@@ -8,7 +8,7 @@ const Admin = () => {
   const navigate = useNavigate();
 
   const hanldeLogout = () => {
-    dispatch(logoutUserAsync());
+    // dispatch(logoutUserAsync());
     navigate('/', { replace: true });
   };
   return (

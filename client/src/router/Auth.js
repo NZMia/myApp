@@ -1,12 +1,15 @@
-import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchUserAsync } from '../store/userSlice';
+
+import { useLoginMutation } from '../store/api/userApi';
+import { setCredital } from '../store/slice/userSlice';
 
 const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
+
   const userRef = useRef();
   const pswRef = useRef();
   const nameRef = useRef();
@@ -16,10 +19,22 @@ const Auth = () => {
     const email = userRef.current.value;
     const password = pswRef.current.value;
     // const name = nameRef.current.value;
-    dispatch(fetchUserAsync({ email, password }));
+    // dispatch(fetchUserAsync({ email, password }));
 
-    navigate('/admin', { replace: true });
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredital(res));
+      navigate('/admin', { replace: true });
+    } catch (error) {
+      console.info('error', error);
+
+      throw new Error();
+    }
   };
+
+  if (isLoading) {
+    return <div>Loading....</div>;
+  }
 
   return (
     <section className="page__auth">
