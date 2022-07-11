@@ -23,7 +23,16 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/api/auth', usersRouter);
 app.use('/api/admin', userAuth, blogRouter);
-// app.use('/api/getDemo', demoRouter );
+
+/***
+ * DigIO test
+ */
+app.get('/api/digio', (req, res, next) => {
+  res.status(200).json({
+    message: ' Successful',
+  });
+  next();
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
