@@ -35,11 +35,43 @@ app.get('/api/digio', (req, res, next) => {
     
     // The number of unique IP addresses
     const ipRegex = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/gm;
-    const uniqueAddress = new Set(data.match(ipRegex));
+    const ipAddressCollection = data.match(ipRegex)
+    const uniqueAddress = new Set(ipAddressCollection);
   
+    // The top 3 most visited URLs ???????
+    const getUrls =  data.match(/get (\S*) http/ig)
+    const counterUrl = getUrls.reduce((currentUrl, url)=> {
+        if (url in currentUrl) {
+          currentUrl[url]++
+        }
+        else {
+          currentUrl[url] = 1
+        }
+        return currentUrl
+    },{})
+
+    //The top 3 most active IP addresses
+    const ipCounter = ipAddressCollection.reduce(
+      (collection, ip)=> {
+        if (ip in collection) {
+          collection[ip]++
+        }
+        else {
+          collection[ip] = 1
+        }
+        return collection
+    },{})
+
+    const getTop3ActiveIp = Object.keys(ipCounter).sort(
+      (a, b) => data[a] - data[b]
+    ).slice(0, 3)
+
     res.status(200).json({ 
-      message:"GET request to the homepage",
-      uniqueAddressCount: uniqueAddress.size
+      message:"digio test",
+      test1_uniqueAddressCount: uniqueAddress.size,
+      test2_top_3_visited_url: 'pleas check `${test2_urls_visited_counter}`',
+      test2_urls_visited_counter: counterUrl,
+      test3_top_3_avtive_ip: getTop3ActiveIp
     })
   }); 
 })
