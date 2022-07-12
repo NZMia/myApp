@@ -19,7 +19,7 @@ const userApi = baseApi.injectEndpoints({
     }),
 
     logout: builder.mutation({
-      query: () => ({
+      query: (credentials) => ({
         url: '/auth/logout',
         method: 'POST',
         body: { ...credentials }

@@ -15,14 +15,14 @@ const userSlice = createSlice({
       (state.credential = user), (state.token = token);
     },
 
-    logout: (state, action) => {
+    setLogout: (state, action) => {
       state.user = null;
       state.token = null;
     }
   }
 });
 
-export const { setCredital, logout } = userSlice.actions;
+export const { setCredital, setLogout } = userSlice.actions;
 
 export default userSlice.reducer;
 
