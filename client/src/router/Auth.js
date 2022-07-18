@@ -26,8 +26,8 @@ const Auth = () => {
     e.preventDefault();
     const email = userRef.current.value;
     const password = pswRef.current.value;
-    const name = nameRef?.current.value;
-    // dispatch(fetchUserAsync({ email, password }));
+    const name = nameRef && nameRef?.current?.value;
+
     const action = isRegister
       ? register({ email, name, password })
       : login({ email, password });

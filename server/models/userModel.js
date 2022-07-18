@@ -46,6 +46,16 @@ userSchema.statics.existCheck = async function(email, password) {
 
   return user;
 }
+
+userSchema.statics.findAll = async function () {
+  // Find all user
+  const users = await this.find();
+
+  // None user in the database
+  if(!users) throw new Error('Unable to login: incorrect email');
+  
+  return users;
+}
 const User = mongoose.model('User', userSchema);
 
 module.exports = User

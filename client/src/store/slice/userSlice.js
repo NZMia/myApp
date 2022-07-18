@@ -5,6 +5,7 @@ const userSlice = createSlice({
 
   initialState: {
     credential: null,
+    usersList: [],
     token: null
   },
 
@@ -15,14 +16,19 @@ const userSlice = createSlice({
       (state.credential = user), (state.token = token);
     },
 
+    setUsersList: (state, action) => {
+      const { users } = action.payload;
+      state.usersList = users;
+    },
+
     setLogout: (state, action) => {
-      state.user = null;
+      state.credential = null;
       state.token = null;
     }
   }
 });
 
-export const { setCredital, setLogout } = userSlice.actions;
+export const { setCredital, setLogout, setUsersList } = userSlice.actions;
 
 export default userSlice.reducer;
 

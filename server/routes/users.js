@@ -4,7 +4,8 @@ const {
     createUser,
     getUser,
     getLatestToken,
-    logout
+    logout,
+    getUsers
 } = require('../controller/authController');
 const { userAuth } = require('../middleware/authMiddleware');
 
@@ -15,9 +16,12 @@ router.post('/register', createUser)
 router.post('/login', getUser)
 
 // Endpoint for logging out of an user account
-router.post('/logout', userAuth, logout)
+router.post('/logout', logout)
 
 // Endpoint for refresh
 router.get('/refresh', getLatestToken)
+
+// Endpoint for getting all users
+router.get('/getUsers', getUsers)
 
 module.exports = router;

@@ -8,7 +8,7 @@ const baseQuery = fetchBaseQuery({
     const token = getState().user.token;
 
     if (token) {
-      headers.set('Authorization', `Bearer ${token}`);
+      headers.set('authorization', `Bearer ${token}`);
     }
     return headers;
   }
@@ -17,12 +17,11 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithIntercept = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
   const { data } = result;
-  console.info('result', result);
 
   if (result?.error?.status === 403) {
     const { status, data } = error;
 
-    console.log(status, 'http的状态码');
+    console.log(status, 'http');
     // throw new Error();
   }
   // else {

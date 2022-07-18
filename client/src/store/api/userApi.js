@@ -24,11 +24,23 @@ const userApi = baseApi.injectEndpoints({
         method: 'POST',
         body: { ...credentials }
       })
+    }),
+
+    getUsersList: builder.query({
+      query: () => '/auth/getUsers',
+      transformResponse: (response) => {
+        return response;
+      }
     })
   })
 });
 
-export const { useRegisterMutation, useLoginMutation, useLogoutMutation } =
-  userApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useGetUsersListQuery,
+  useLazyGetUsersListQuery
+} = userApi;
 
 export default userApi;

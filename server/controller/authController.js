@@ -104,9 +104,26 @@ const logout = async (req, res) => {
   }
 }
 
+const getUsers = async (req, res) => {
+
+  try {
+    const users = await User.findAll();
+    console.info('users', users);
+    
+    res.status(200).json({
+      message: 'Get Users All',
+      users: users
+    });
+  }
+  catch(err) {
+    res.status(400).json({ message:"get all failed", err })
+  }
+}
+
 module.exports = {
   createUser,
   getUser,
   getLatestToken,
-  logout
+  logout,
+  getUsers
 }

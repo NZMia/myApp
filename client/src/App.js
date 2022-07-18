@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Auth from './router/Auth';
 import Admin from './router/Admin';
+import UserList from './router/UserList';
 import RequireAuth from './router/RequireAuth';
 import './styles/main.scss';
 
@@ -16,6 +17,7 @@ const App = () => {
       {/* protect routes */}
       <Route element={<RequireAuth />}>
         <Route path="admin" element={<Admin />} />
+        <Route path="userslist" element={<UserList />} />
       </Route>
 
       {/* catch all */}
