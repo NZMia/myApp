@@ -108,15 +108,14 @@ const getUsers = async (req, res) => {
 
   try {
     const users = await User.findAll();
-    console.info('users', users);
-    
+  
     res.status(200).json({
       message: 'Get Users All',
       users: users
     });
   }
-  catch(err) {
-    res.status(400).json({ message:"get all failed", err })
+  catch(error) {
+    res.status(400).json({ message:"get all failed", error })
   }
 }
 

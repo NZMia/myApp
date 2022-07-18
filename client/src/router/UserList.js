@@ -10,7 +10,7 @@ const UserList = () => {
         usersList.map((user) => {
           const { email, name } = user;
           return (
-            <p>
+            <p key={user._id}>
               {email}: {name}
             </p>
           );

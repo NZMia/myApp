@@ -22,6 +22,6 @@ router.post('/logout', logout)
 router.get('/refresh', getLatestToken)
 
 // Endpoint for getting all users
-router.get('/getUsers', getUsers)
+router.get('/getUsers', userAuth, getUsers)
 
 module.exports = router;
