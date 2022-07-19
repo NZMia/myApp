@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import AnimationBackground from '../components/AnimationBackground';
 
 import { useLoginMutation, useRegisterMutation } from '../store/api/userApi';
 import { setCredital } from '../store/slice/userSlice';
@@ -18,12 +20,16 @@ const Auth = () => {
   const pswRef = useRef();
   const nameRef = useRef();
 
+  const currentStatue = isRegister ? 'Register' : 'Login';
+  const clueText = isRegister ? 'Has Account' : 'No Account';
+
   const handleReigster = (e) => {
     setIsRegister(!isRegister);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const email = userRef.current.value;
     const password = pswRef.current.value;
     const name = nameRef && nameRef?.current?.value;
@@ -33,14 +39,16 @@ const Auth = () => {
       : login({ email, password });
 
     try {
+      // get all current user from the query
       const res = await action.unwrap();
 
+      // set state
       dispatch(setCredital(res));
+
+      // then redirect
       navigate('/admin', { replace: true });
     } catch (error) {
       console.info('error', error);
-
-      // throw new Error();
     }
   };
 
@@ -50,21 +58,26 @@ const Auth = () => {
 
   return (
     <section className="page page__auth">
-      <div className="page__auth__container">
-        <h2 className="auth__title">{title}</h2>
+      <div className="page__conatiner">
+        {/* Title: login / register */}
+        <h1 className="auth__title">{currentStatue}</h1>
 
-        <input
-          className="auth__input auth__input__email"
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          ref={userRef}
-          required
-        />
+        {/* Email */}
+        <div className="auth__user">
+          {/* <label htmlFor="email">Email</label> */}
+          <input
+            type="text"
+            placeholder="Enter Email"
+            name="email"
+            ref={userRef}
+            required
+          />
+        </div>
 
+        {/* User Name if register */}
         {isRegister && (
           <div className="auth__name">
-            <label htmlFor="useName">User Name</label>
+            {/* <label htmlFor="useName">User Name</label> */}
             <input
               type="text"
               placeholder="Enter User Name"
@@ -74,10 +87,11 @@ const Auth = () => {
             />
           </div>
         )}
+
+        {/* Password */}
         <div className="auth__psw">
-          <label htmlFor="psw">Password</label>
+          {/* <label htmlFor="psw">Password</label> */}
           <input
-            className="auth__input auth__input__psw"
             type="password"
             placeholder="Enter Password"
             name="psw"
@@ -85,14 +99,19 @@ const Auth = () => {
             required
           />
         </div>
-        <button type="sutmit" onClick={handleSubmit}>
-          login
+
+        <button className="button--login" type="sutmit" onClick={handleSubmit}>
+          {currentStatue}
         </button>
 
-        <button type="button" onClick={handleReigster}>
-          has account, Register
-        </button>
+        <p className="auth__clue">
+          {clueText}
+          <a onClick={handleReigster}>{isRegister ? 'Login' : 'Register'}</a>
+        </p>
       </div>
+
+      {/* Animation Background */}
+      <AnimationBackground />
     </section>
   );
 };

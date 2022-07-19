@@ -13,20 +13,26 @@ import './styles/main.scss';
 
 const App = () => {
   return (
-    <Routes>
-      {/* public routers */}
-      <Route index element={<p>homepage</p>} />
-      <Route path="auth" element={<Auth />} />
+    <div className="mainLayout">
+      <Header />
 
-      {/* protect routes */}
-      <Route element={<RequireAuth />}>
-        <Route path="admin" element={<Admin />} />
-        <Route path="userslist" element={<UserList />} />
-      </Route>
+      <Routes>
+        {/* public routers */}
+        <Route index element={<p>homepage</p>} />
+        <Route path="auth" element={<Auth />} />
 
-      {/* catch all */}
-      <Route path="*" element={<p>There's nothing here: 404!</p>} />
-    </Routes>
+        {/* protect routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="admin" element={<Admin />} />
+          <Route path="userslist" element={<UserList />} />
+        </Route>
+
+        {/* catch all */}
+        <Route path="*" element={<p>There's nothing here: 404!</p>} />
+      </Routes>
+
+      <Footer />
+    </div>
   );
 };
 

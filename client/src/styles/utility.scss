@@ -13,3 +13,12 @@
     }
   }
 }
+
+// Generate all color classes with color list: font__{$name}
+@mixin color-modifiers($attribute: 'color', $prefix: '-') {
+  @each $name, $hex in $colors {
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}

@@ -4,8 +4,9 @@
 @import './layout';
 @import './typograhpy';
 
-@import './auth';
-@import './headers';
+@import './auth.scss';
+@import './animationBackground.scss';
+@import './button.scss';
 
 body {
   margin: 0;
@@ -13,7 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: $global-max-width;
-  background-color: $lotion;
 }
 
 .mainLayout {
@@ -22,8 +22,9 @@ body {
   flex-direction: column;
 }
 
-.header .footer {
-  flex: 1;
+.header,
+.footer {
+  flex: 0 1 auto;
 }
 
 .page {
@@ -31,40 +32,6 @@ body {
   flex: 1;
 }
 
-.bg--grey {
-  background-color: $gunmetal;
-  color: $lightTaupe;
-
-  a {
-    display: block;
-    margin: $global-margin 0;
-    color: $platinum;
-    cursor: pointer;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $lightTaupe;
-    }
-  }
-}
-
 img {
   width: 100%;
-}
-.bg--white {
-  background-color: $lotion;
-  color: $gunmetal;
-  a {
-    display: block;
-    margin: $global-margin 0;
-    color: $lightTaupe;
-    cursor: pointer;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $gunmetal;
-    }
-  }
 }

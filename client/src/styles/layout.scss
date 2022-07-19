@@ -7,3 +7,7 @@
 .globalGutter {
   padding: $global-padding * 2.5;
 }
+
+.background {
+  @include color-modifiers($attribute: 'background', $prefix: '--');
+}
