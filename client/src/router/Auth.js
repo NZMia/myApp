@@ -1,36 +1,53 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchUserAsync, createUserAsync } from '../store/userSlice';
+
+import { useLoginMutation, useRegisterMutation } from '../store/api/userApi';
+import { setCredital } from '../store/slice/userSlice';
 
 const Auth = () => {
-  const [hasAccount, setHasAccount] = useState(true);
+  const [isRegister, setIsRegister] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+  const [register] = useRegisterMutation();
+
   const userRef = useRef();
   const pswRef = useRef();
   const nameRef = useRef();
 
-  const handelSwitch = () => {
-    setHasAccount(!hasAccount);
+  const handleReigster = (e) => {
+    setIsRegister(!isRegister);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = userRef.current.value;
     const password = pswRef.current.value;
+    const name = nameRef && nameRef?.current?.value;
 
-    if (hasAccount) {
-      dispatch(fetchUserAsync({ email, password }));
-    } else {
-      const name = nameRef?.current.value;
-      dispatch(createUserAsync({ email, name, password }));
+    const action = isRegister
+      ? register({ email, name, password })
+      : login({ email, password });
+
+    try {
+      const res = await action.unwrap();
+
+      dispatch(setCredital(res));
+      navigate('/admin', { replace: true });
+    } catch (error) {
+      console.info('error', error);
+
+      // throw new Error();
     }
-
-    navigate('/admin', { replace: true });
   };
 
-  const title = hasAccount ? 'Login' : 'Register';
+  if (isLoading) {
+    return <div>Loading....</div>;
+  }
+
   return (
     <section className="page page__auth">
       <div className="page__auth__container">
@@ -45,48 +62,36 @@ const Auth = () => {
           required
         />
 
-        {!hasAccount && (
+        {isRegister && (
+          <div className="auth__name">
+            <label htmlFor="useName">User Name</label>
+            <input
+              type="text"
+              placeholder="Enter User Name"
+              name="useName"
+              ref={nameRef}
+              required
+            />
+          </div>
+        )}
+        <div className="auth__psw">
+          <label htmlFor="psw">Password</label>
           <input
-            className="auth__input auth__input__userName"
-            type="text"
-            placeholder="Enter User Name"
-            name="useName"
-            ref={nameRef}
+            className="auth__input auth__input__psw"
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            ref={pswRef}
             required
           />
-        )}
-        <input
-          className="auth__input auth__input__psw"
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          ref={pswRef}
-          required
-        />
-
-        <button className="auth__button" type="sutmit" onClick={handleSubmit}>
-          {title}
+        </div>
+        <button type="sutmit" onClick={handleSubmit}>
+          login
         </button>
 
-        <div className="auth__account">
-          {hasAccount ? (
-            <span>
-              Don't have an account?
-              <span className="auth__account--register" onClick={handelSwitch}>
-                {' '}
-                Register{' '}
-              </span>
-            </span>
-          ) : (
-            <span>
-              Have an account?
-              <span className="auth__account--register" onClick={handelSwitch}>
-                {' '}
-                Login{' '}
-              </span>
-            </span>
-          )}
-        </div>
+        <button type="button" onClick={handleReigster}>
+          has account, Register
+        </button>
       </div>
     </section>
   );
