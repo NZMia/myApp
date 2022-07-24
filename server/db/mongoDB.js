@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-const { MONGO_URI } = process.env;
+const { MONGO_URI, MONGO_URL_PRODUCTION } = process.env;
 
 exports.connect = () => {
     mongoose
-    .connect(MONGO_URI, {
-        useUnifiedTopology: true
+    .connect(MONGO_URL_PRODUCTION, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     })
     .then(() => {
       console.log("Successfully connected to database");
