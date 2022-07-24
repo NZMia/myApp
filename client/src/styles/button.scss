@@ -1,0 +1,9 @@
+.button {
+  @extend .font;
+
+  width: 100%;
+  padding: $global-padding * 0.8;
+  cursor: pointer;
+  border-radius: $global-border-radius;
+  border: none;
+}
