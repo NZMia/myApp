@@ -1,22 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-// const Day = ({ newDate }) => {
-//   const { isCurrentMonth, isToday, isSelected, number } = newDate
-//   return (
-//     <div className={
-//       "day" +
-//       `${isCurrentMonth ?? "day--different-month"} +
-//       ${isToday ?? "day--today"} +
-//       ${isSelected ?? "day--selected"}
-//       `}>
-
-//       <div className="day__number">
-//         { number }
-//       </div>
-//     </div>
-//   )
-// }
-
 const Calendar = () => {
   let today = new Date();
   let grid = { id: 0, day: 0 };
@@ -49,11 +32,10 @@ const Calendar = () => {
       <div className="currentCalendar">
         <button
           title="previous month"
-          data-bs-toggle="tooltip"
-          className="btn btn-secondary rounded-pill ms-1"
+          className="button button--icon-only"
           onClick={() => setMonthDifference(monthDifference - 1)}
         >
-          pre
+          &#10094;
         </button>
         <h1>
           {month.today.toLocaleString('default', {
@@ -63,11 +45,10 @@ const Calendar = () => {
         </h1>
         <button
           title="next month"
-          data-bs-toggle="tooltip"
-          className="btn btn-secondary rounded-pill ms-1"
+          className="button button--icon-only"
           onClick={() => setMonthDifference(monthDifference + 1)}
         >
-          next
+          &#10095;
         </button>
       </div>
       <table className="table table-bordered table-responsive text-center">
@@ -88,17 +69,16 @@ const Calendar = () => {
                     if (grid.day || month.firstDay.getDay() === grid.id)
                       grid.day++;
                     grid.id++;
-
                     if (grid.day > month.lastDay.getDate()) grid.day = 0;
 
                     return (
-                      <td key={id}>
+                      <td key={id} className={grid.day === 0 && 'cell--empty'}>
                         {grid.day != 0 && (
                           <span
                             className={
                               monthDifference == 0 &&
                               grid.day == new Date().getDate()
-                                ? 'badge'
+                                ? 'cell--current-day'
                                 : ''
                             }
                           >
