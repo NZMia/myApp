@@ -46,4 +46,5 @@ export const rootStore = configureStore({
 });
 
 export const persistor = persistStore(rootStore);
+
 setupListeners(rootStore.dispatch);
