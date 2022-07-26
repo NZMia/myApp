@@ -14,7 +14,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  // z-index: 1;
 
   li {
     width: 2.5rem;
@@ -59,7 +59,7 @@
       animation-delay: 3s;
     }
     &:nth-child(7) {
-      left: 32%;
+      left: 15%;
       width: 10rem;
       height: 10rem;
       animation-delay: 7s;

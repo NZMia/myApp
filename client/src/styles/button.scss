@@ -6,4 +6,11 @@
   cursor: pointer;
   border-radius: $global-border-radius;
   border: none;
+
+  &--icon-only {
+    width: auto;
+    background-color: transparent;
+    color: $pampas;
+    font-size: 2rem;
+  }
 }

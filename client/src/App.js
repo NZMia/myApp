@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Auth from './router/Auth';
 import Admin from './router/Admin';
+import Home from './router/Home';
 import UserList from './router/UserList';
 import RequireAuth from './router/RequireAuth';
 
@@ -18,7 +19,7 @@ const App = () => {
 
       <Routes>
         {/* public routers */}
-        <Route index element={<p>homepage</p>} />
+        <Route index element={<Home />} />
         <Route path="auth" element={<Auth />} />
 
         {/* protect routes */}

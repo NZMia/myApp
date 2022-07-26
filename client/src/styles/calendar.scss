@@ -1,0 +1,65 @@
+.calendar {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  margin: 1rem;
+  border: solid;
+
+  .currentCalendar {
+    display: flex;
+    justify-content: space-between;
+    background-color: $dark;
+    color: $pampas;
+  }
+
+  table {
+    border-radius: 5px;
+    font-weight: normal;
+    border: none;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    color: $dark;
+
+    thead {
+      th {
+        border-right: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        text-transform: uppercase;
+      }
+    }
+    td,
+    th {
+      text-align: center;
+      padding: 8px;
+      vertical-align: baseline;
+    }
+    td {
+      border-right: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+      height: 6rem;
+      text-align: right;
+    }
+  }
+
+  .cell--empty {
+    cursor: none;
+    background-color: $pampas;
+  }
+
+  .cell--current-day {
+    background: $dark;
+    color: $pampas;
+    font-weight: bold;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+}
