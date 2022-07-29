@@ -3,22 +3,22 @@ import { Routes, Route } from 'react-router-dom';
 
 import Auth from './router/Auth';
 import Admin from './router/Admin';
+import Home from './router/Home';
 import UserList from './router/UserList';
 import RequireAuth from './router/RequireAuth';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import './styles/main.scss';
+import './index.css';
+// import './styles/main.scss';
 
 const App = () => {
   return (
-    <div className="mainLayout">
-      <Header />
-
+    <div className="relative flex flex-col bg-params text-pampas">
       <Routes>
         {/* public routers */}
-        <Route index element={<p>homepage</p>} />
+        <Route index element={<Home />} />
         <Route path="auth" element={<Auth />} />
 
         {/* protect routes */}

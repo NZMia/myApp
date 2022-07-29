@@ -17,20 +17,19 @@ body {
 }
 
 .mainLayout {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  @extend .flex;
+  @extend .flex-col;
 }
 
-.header,
-.footer {
-  flex: 0 1 auto;
-}
+// .header,
+// .footer {
+//   flex: 0 1 auto;
+// }
 
-.page {
-  display: flex;
-  flex: 1;
-}
+// .page {
+//   display: flex;
+//   flex: 1;
+// }
 
 img {
   width: 100%;

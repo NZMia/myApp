@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .mainPage {
+    @apply flex flex-1 flex-col min-h-screen overflow-scroll;
+  }
+}
+
+@layer components {
+  .banner__side {
+    @apply h-128 absolute right-0 w-full md:w-4/5 xl:w-1/2;
+  }
+  .sharp {
+    @apply relative w-full h-96 bg-dark;
+  }
+  .btn {
+    @apply px-10 py-2  bg-yellow text-dark font-semibold rounded-full border border-yellow hover:text-pampas;
+  }
+  .striped__yellow {
+    --c1: #f7c35f;
+    --c2: transparent;
+
+    background: linear-gradient(
+      135deg,
+      var(--c1) 25%,
+      var(--c2) 25%,
+      var(--c2) 50%,
+      var(--c1) 50%,
+      var(--c1) 75%,
+      var(--c2) 75%,
+      var(--c2) 100%
+    );
+    background-size: 2rem 2rem;
+
+    @apply w-full h-72;
+  }
+  .striped__dark {
+    --c1: #292933;
+    --c2: transparent;
+    background: linear-gradient(
+      135deg,
+      var(--c1) 25%,
+      var(--c2) 25%,
+      var(--c2) 50%,
+      var(--c1) 50%,
+      var(--c1) 75%,
+      var(--c2) 75%,
+      var(--c2) 100%
+    );
+    background-size: 2rem 2rem;
+
+    @apply w-full h-72;
+  }
+}
