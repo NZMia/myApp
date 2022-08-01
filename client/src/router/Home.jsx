@@ -21,15 +21,12 @@ const Home = () => {
 
           <div className="w-2/3 flex justify-between z-10 ml-20 text-left">
             <div className="flex flex-col justify-center w-1/2">
-              <h1 className="text-dark font-medium text-4xl my-7">
+              <h1 className="text-yellow font-medium text-4xl my-7">
                 Hello, <br /> I am <br />
                 web Developer.
               </h1>
               <p className="text-dark text-xl my-7">
-                We make a meaningful difference to the world’s most loved
-                brands. We begin with ‘we know nothing’, and immerse ourselves
-                in everything you do. We want to move in. Be part of your team.
-                And see the world how you see it.
+              A web developer with four years of front-end experience and who is passionate about learning new technologies
               </p>
             </div>
             <div className="flex items-end w-1/3">

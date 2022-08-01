@@ -25,13 +25,11 @@ const Banner = () => {
         <div className="flex justify-center items-center min-h-full">
           <div className="w-3/4 flex flex-col z-10 text-right">
             <img className="w-1/5 self-end mb-9" src={logo} alt="" />
-            <h1 className="text-params font-medium text-4xl my-7 self-end">
+            <h1 className="text-yellow font-medium text-4xl my-7 self-end">
               Front End Develoepr
             </h1>
             <p className="text-pampas-100 w-3/5 text-2xl self-end italic">
-              We create brands for the most innovative and exciting companies in
-              the world, to help them rewrite the rules for how we all live our
-              lives.
+              Keep Learning, Stay Hungry
             </p>
 
             <div className="buttonGroup flex justify-end my-14">
