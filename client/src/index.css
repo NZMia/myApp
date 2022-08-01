@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
-  .mainPage {
-    @apply flex flex-1 flex-col min-h-screen overflow-scroll;
+  /* refactor */
+  .page {
+    @apply flex flex-1 min-h-screen w-full overflow-scroll;
+  }
+  .page__bg--vedio {
+    @apply relative flex items-center justify-center mb-12 overflow-hidden;
   }
 }
 
@@ -16,7 +20,15 @@
     @apply relative w-full h-96 bg-dark;
   }
   .btn {
-    @apply px-10 py-2  bg-yellow text-dark font-semibold rounded-full border border-yellow hover:text-pampas;
+    @apply px-10 py-2 font-semibold rounded-full border hover:text-pampas;
+  }
+
+  .btn--yellow {
+    @apply btn bg-yellow;
+  }
+
+  .input {
+    @apply block text-sm py-3 px-4 rounded-lg w-full border outline-none;
   }
   .striped__yellow {
     --c1: #f7c35f;

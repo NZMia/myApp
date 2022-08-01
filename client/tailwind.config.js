@@ -23,8 +23,11 @@ module.exports = {
     backgroundImage: {
       'hero-pattern':
         "linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65)), url('/src/util/imgs/banner.jpg')",
+
       'striped-pattern':
-        'linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65))'
+        'linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65))',
+
+      'video-pattern': "url('/src/util/video/coding.mp4')"
     },
     backgroundPosition: {
       'right-bottm-1': '50% 100%'

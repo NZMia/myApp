@@ -1,7 +1,0 @@
-.font {
-  font-size: 1rem;
-}
-
-.font {
-  @include color-modifiers($prefix: '--');
-}
