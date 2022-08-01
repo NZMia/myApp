@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // env
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname,'..', "public/index.html"));
+});
 
 app.use('/api/auth', usersRouter);
 app.use('/api/admin', userAuth, blogRouter);
