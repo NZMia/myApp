@@ -20,13 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // env
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname,'..', "public/index.html"));
-});
 
 app.use('/api/auth', usersRouter);
 app.use('/api/admin', userAuth, blogRouter);
-// app.use('/api/getDemo', demoRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,4 +40,4 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
   
-  module.exports = app;
+module.exports = app;
