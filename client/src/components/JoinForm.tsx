@@ -30,9 +30,9 @@ const JoinForm = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const email = userRef.current?.innerHTML!;
-    const password = pswRef.current?.innerHTML!;
-    const name = nameRef?.current?.innerHTML!;
+    const email = userRef.current?.value!;
+    const password = pswRef.current?.value!;
+    const name = nameRef?.current?.value!;
 
     const action = isRegister
       ? register({ email, name, password })
