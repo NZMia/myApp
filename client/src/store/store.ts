@@ -9,7 +9,7 @@ import userApi from './api/userApi';
 
 import userSlice from './slice/userSlice';
 
-const middlewareHandler = (getDefaultMiddleware) => {
+const middlewareHandler = (getDefaultMiddleware: any) => {
   const middlewareList = [
     ...getDefaultMiddleware({
       serializableCheck: {
@@ -46,4 +46,6 @@ export const rootStore = configureStore({
 });
 
 export const persistor = persistStore(rootStore);
+export type RootState = ReturnType<typeof rootStore.getState>;
+
 setupListeners(rootStore.dispatch);

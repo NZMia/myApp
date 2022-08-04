@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Sharp = ({ reverse }) => {
+interface SharpProps {
+  reverse: boolean;
+}
+
+const Sharp = ({ reverse }: SharpProps) => {
   return (
     <div className="sharp">
       <div

@@ -1,7 +1,10 @@
 import React from 'react';
-import coding from '../util/imgs/coding.jpg';
 
-const Striped = ({ darkStriped }) => {
+interface StripedProps {
+  darkStriped: boolean;
+}
+
+const Striped = ({ darkStriped }: StripedProps) => {
   return (
     <div className={darkStriped ? 'striped__dark' : 'striped__yellow'}>
       {/* {

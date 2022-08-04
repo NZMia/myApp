@@ -1,10 +1,9 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   useLogoutMutation,
-  useGetUsersListQuery,
   useLazyGetUsersListQuery
 } from '../store/api/userApi';
 import { setLogout, setUsersList } from '../store/slice/userSlice';
@@ -16,7 +15,7 @@ const Admin = () => {
   const [logout, { isLoading }] = useLogoutMutation();
   const [trigger, { data }] = useLazyGetUsersListQuery();
 
-  const handleLogout = async (e) => {
+  const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     try {
@@ -26,10 +25,10 @@ const Admin = () => {
       navigate('/', { replace: true });
     } catch {}
   };
-
-  const handleGetUser = () => {
-    trigger();
-  };
+  // todo
+  // const handleGetUser = () => {
+  //   trigger();
+  // };
 
   useEffect(() => {
     if (data) {
@@ -43,7 +42,7 @@ const Admin = () => {
   }
   return (
     <div className="page__admin">
-      <button onClick={handleGetUser}>Get User</button>
+      {/* <button onClick={handleGetUser}>Get User</button> */}
       <button onClick={handleLogout}>logout</button>
     </div>
   );

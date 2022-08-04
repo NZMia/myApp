@@ -1,28 +1,35 @@
 import { baseApi } from './baseApi';
 
+export interface Credential {
+  id?: number | null;
+  email: string | null;
+  name?: string | null;
+  password: string | null;
+}
+
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation({
-      query: (credentials) => ({
+    register: builder.mutation<any, Credential>({
+      query: (data: Credential) => ({
         url: '/auth/register',
         method: 'POST',
-        body: { ...credentials }
+        body: data
       })
     }),
 
-    login: builder.mutation({
-      query: (credentials) => ({
+    login: builder.mutation<any, Credential>({
+      query: (data: Credential) => ({
         url: '/auth/login',
         method: 'POST',
-        body: { ...credentials }
+        body: data
       })
     }),
 
-    logout: builder.mutation({
-      query: (credentials) => ({
+    logout: builder.mutation<void, void>({
+      query: () => ({
         url: '/auth/logout',
         method: 'POST',
-        body: { ...credentials }
+        body: {}
       })
     }),
 

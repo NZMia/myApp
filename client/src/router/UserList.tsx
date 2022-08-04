@@ -1,8 +1,8 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
 
 const UserList = () => {
-  const { usersList } = useSelector((state) => state.user);
+  const { usersList } = useSelector((state: RootState) => state.user);
 
   return (
     <div className="userList__page">
@@ -10,7 +10,7 @@ const UserList = () => {
         usersList.map((user) => {
           const { email, name } = user;
           return (
-            <p key={user._id}>
+            <p key={user.id}>
               {email}: {name}
             </p>
           );

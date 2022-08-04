@@ -22,7 +22,7 @@ module.exports = {
     },
     backgroundImage: {
       'hero-pattern':
-        "linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65)), url('/src/util/imgs/banner.jpg')",
+        "linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65)), url('/src/assets/imgs/banner.jpg')",
 
       'striped-pattern':
         'linear-gradient(rgba(255,255,255, .65), rgba(255,255,255, .65))',

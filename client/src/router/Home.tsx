@@ -4,8 +4,7 @@ import Sharp from '../components/Sharp';
 import Striped from '../components/Striped';
 
 import ComingSoon from '../components/ComingSoon';
-
-import bannerShape from '../util/imgs/banner-shape.png';
+import bannerShape from '../assets/imgs/banner-shape.png';
 
 const Home = () => {
   return (
@@ -26,14 +25,14 @@ const Home = () => {
                 web Developer.
               </h1>
               <p className="text-dark text-xl my-7">
-              A web developer with four years of front-end experience and who is passionate about learning new technologies
+                A web developer with four years of front-end experience and who
+                is passionate about learning new technologies.
               </p>
             </div>
             <div className="flex items-end w-1/3">
               <Striped darkStriped={false} />
             </div>
           </div>
-          
         </div>
       </div>
 

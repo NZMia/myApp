@@ -1,14 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Credential } from '../api/userApi';
+
+interface CreditialInitState {
+  credential: Credential | null;
+  usersList: Credential[];
+  token?: Credential | null;
+}
+
+const initialState: CreditialInitState = {
+  credential: null,
+  usersList: [],
+  token: null
+};
 
 const userSlice = createSlice({
   name: 'user',
-
-  initialState: {
-    credential: null,
-    usersList: [],
-    token: null
-  },
-
+  initialState,
   reducers: {
     setCredital: (state, action) => {
       const { user, token } = action.payload;
@@ -32,5 +39,5 @@ export const { setCredital, setLogout, setUsersList } = userSlice.actions;
 
 export default userSlice.reducer;
 
-export const selectCurrentUser = (state) => state.user.user;
-export const selectCurrentToken = (state) => state.user.token;
+// export const selectCurrentUser = (state) => state.user.user;
+// export const selectCurrentToken = (state) => state.user.token;
