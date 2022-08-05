@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import banner from '../assets/imgs/banner-cover.png';
+import banner from '../assets/imgs/bannerCover.png';
 import logo from '../assets/imgs/logo.png';
 
 const Banner = () => {
@@ -24,7 +24,7 @@ const Banner = () => {
         <div className="flex justify-center items-center min-h-full">
           <div className="w-3/4 flex flex-col z-10 text-right">
             <img className="w-1/5 self-end mb-9" src={logo} alt="" />
-            <h1 className="text-yellow font-medium text-4xl my-7 self-end">
+            <h1 className="text-yellow font__header-h1 self-end">
               Front End Develoepr
             </h1>
             <p className="text-pampas-100 w-3/5 text-2xl self-end italic">

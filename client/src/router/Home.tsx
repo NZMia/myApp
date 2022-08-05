@@ -4,7 +4,7 @@ import Sharp from '../components/Sharp';
 import Striped from '../components/Striped';
 
 import ComingSoon from '../components/ComingSoon';
-import bannerShape from '../assets/imgs/banner-shape.png';
+import bannerShape from '../assets/imgs/bannerShape.png';
 
 const Home = () => {
   return (
@@ -20,11 +20,11 @@ const Home = () => {
 
           <div className="w-2/3 flex justify-between z-10 ml-20 text-left">
             <div className="flex flex-col justify-center w-1/2">
-              <h1 className="text-yellow font-medium text-4xl my-7">
+              <h1 className="text-yellow font__header-h1">
                 Hello, <br /> I am <br />
                 web Developer.
               </h1>
-              <p className="text-dark text-xl my-7">
+              <p className="text-dark font__body-l ">
                 A web developer with four years of front-end experience and who
                 is passionate about learning new technologies.
               </p>

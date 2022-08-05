@@ -10,6 +10,10 @@ module.exports = {
       xl: '1440px'
     },
     extend: {
+      fontFamily: {
+        header: ['Helvetica', 'Arial', 'sans-serif'],
+        body: ['Verdana', 'sans-serif']
+      },
       colors: {
         pampas: '#f8f6f4',
         'pampas-100': '#6e6e7f',

@@ -105,11 +105,7 @@ const JoinForm = () => {
       </div>
 
       <div className="text-center mt-6">
-        <button
-          className="btn bg-dark text-pampas "
-          type="submit"
-          onClick={handleSubmit}
-        >
+        <button className="btn--dark" type="submit" onClick={handleSubmit}>
           {currentStatue}
         </button>
         <p className="mt-4 text-sm">

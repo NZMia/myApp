@@ -3,7 +3,33 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* refactor */
+  body {
+    @apply font-body;
+  }
+
+  .font__header {
+    @apply font-header font-medium;
+  }
+  .font__header-h1 {
+    @apply font__header text-4xl my-7;
+  }
+  .font__header-h2 {
+    @apply font__header text-3xl my-5;
+  }
+  .font__header-h3 {
+    @apply font__header text-2xl my-5;
+  }
+
+  .font__body-l {
+    @apply text-xl my-7;
+  }
+  .font__body-m {
+    @apply text-lg my-5;
+  }
+  .font__body-b {
+    @apply text-base my-3;
+  }
+
   .page {
     @apply flex flex-1 min-h-screen w-full overflow-scroll;
   }
@@ -19,16 +45,21 @@
   .sharp {
     @apply relative w-full h-96 bg-dark;
   }
+
   .btn {
-    @apply px-10 py-2 font-semibold rounded-full border hover:text-pampas;
+    @apply px-10 py-2 font-semibold rounded-full;
   }
 
   .btn--yellow {
-    @apply btn bg-yellow;
+    @apply btn bg-yellow text-dark hover:text-pampas;
+  }
+
+  .btn--dark {
+    @apply btn bg-dark text-pampas hover:border border-dark hover:bg-pampas hover:text-dark;
   }
 
   .input {
-    @apply block text-sm py-3 px-4 rounded-lg w-full border outline-none;
+    @apply block text-sm py-3 px-4 rounded-lg w-full outline-none;
   }
   .striped__yellow {
     --c1: #f7c35f;
