@@ -65,7 +65,6 @@ const JoinForm = () => {
 
       {/* Email */}
       <div className="space-y-4">
-        {/* <label htmlFor="email">Email</label> */}
         <input
           className="input"
           type="text"
@@ -79,7 +78,6 @@ const JoinForm = () => {
       {/* User Name if register */}
       {isRegister && (
         <div className="space-y-4">
-          {/* <label htmlFor="useName">User Name</label> */}
           <input
             className="input"
             type="text"
@@ -93,7 +91,6 @@ const JoinForm = () => {
 
       {/* Password */}
       <div className="space-y-4">
-        {/* <label htmlFor="psw">Password</label> */}
         <input
           className="input"
           type="password"

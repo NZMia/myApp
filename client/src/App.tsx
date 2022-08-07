@@ -1,4 +1,3 @@
-import React, { useEffect, useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Auth from './router/Auth';
