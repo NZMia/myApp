@@ -1,7 +1,7 @@
 import { baseApi } from './baseApi';
 
 export interface Credential {
-  id?: number | null;
+  _id?: number | null;
   email: string | null;
   name?: string | null;
   password: string | null;

@@ -1,6 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import SideNav from '../components/SideNav';
+import Tabs from '../components/Tabs';
+import Tab from '../components/Tab';
+
 import type { RootState } from '../store';
 
 import {
@@ -10,12 +14,19 @@ import {
 import { setLogout, setUsersList } from '../store/slice/userSlice';
 
 const Admin = () => {
-  const { name } = useSelector((state: RootState) => state.user.credential);
+  const { credential } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [logout, { isLoading }] = useLogoutMutation();
   const [trigger, { data }] = useLazyGetUsersListQuery();
+
+  const handleGetUsers = async (e: React.MouseEvent<HTMLSpanElement>) => {
+    e.preventDefault();
+
+    // Lazy query
+    trigger({});
+  };
 
   const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,10 +38,6 @@ const Admin = () => {
       navigate('/', { replace: true });
     } catch {}
   };
-  // todo
-  // const handleGetUser = () => {
-  //   trigger();
-  // };
 
   useEffect(() => {
     if (data) {
@@ -52,29 +59,29 @@ const Admin = () => {
             </h1>
 
             <h2 className="font-medium text-xs md:text-sm text-center text-teal-500">
-              {name}
+              {credential?.name}
             </h2>
             <p className="text-xs text-gray-500 text-center">Administrator</p>
           </div>
-          <div id="menu" className="flex flex-col space-y-2">
-            <a className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:text-base rounded-md transition duration-150 ease-in-out">
-              <span className="">Home Page</span>
-            </a>
-            <a className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
-              <span className="">Blog</span>
-            </a>
-            <a className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
-              <span className="">Blog List</span>
-            </a>
-            <a className="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-teal-500 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
-              <span className="">User Liar</span>
-            </a>
-          </div>
 
-          <button className="btn" onClick={handleLogout}>
-            logout
+          {/* <SideNav /> */}
+
+          <button className="btn--dark" onClick={handleLogout}>
+            Logout
           </button>
         </div>
+
+        <Tabs>
+          <Tab title="test1">
+            <p>Lemon is yellow</p>
+          </Tab>
+          <Tab title="test2">
+            <p>Strawberry is red</p>
+          </Tab>
+          <Tab title="test3">
+            <p>Pear is green</p>
+          </Tab>
+        </Tabs>
       </div>
 
       {/* <button onClick={handleGetUser}>Get User</button> */}
