@@ -49,7 +49,13 @@ const Tabs: React.FC<ITabs> = ({ children }) => {
           />
         ))}
       </ul>
-      {children}
+      <div
+        className={
+          'tab' + ' ' + `${selectedTab === index ? 'selectedTab' : ''}`
+        }
+      >
+        {children}
+      </div>
     </section>
   );
 };
