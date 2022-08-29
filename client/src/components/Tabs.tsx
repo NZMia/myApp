@@ -49,7 +49,7 @@ const Tabs: React.FC<ITabs> = ({ children }) => {
           />
         ))}
       </ul>
-      {children}
+      {children[selectedTab]}
     </section>
   );
 };
