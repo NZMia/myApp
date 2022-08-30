@@ -34,9 +34,11 @@ const baseQueryWithIntercept: BaseQueryFn<
     await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 403) {
-    console.log('sending refresh token');
-
-    const getRefreshToken = await baseQuery('auth/refresh', api, extraOptions);
+    const getRefreshToken = await baseQuery(
+      '/api/auth/refresh',
+      api,
+      extraOptions
+    );
 
     if (getRefreshToken?.data) {
       const { data } = getRefreshToken;

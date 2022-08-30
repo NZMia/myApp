@@ -37,8 +37,8 @@ const Tabs: React.FC<ITabs> = ({ children }) => {
   };
 
   return (
-    <section>
-      <ul>
+    <section className="page">
+      <ul className="bg-white h-screen md:block shadow-xl px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out">
         {children.map((item, index) => (
           <TabTitle
             key={index}
@@ -49,13 +49,7 @@ const Tabs: React.FC<ITabs> = ({ children }) => {
           />
         ))}
       </ul>
-      <div
-        className={
-          'tab' + ' ' + `${selectedTab === index ? 'selectedTab' : ''}`
-        }
-      >
-        {children}
-      </div>
+      {children[selectedTab]}
     </section>
   );
 };
